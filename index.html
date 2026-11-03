@@ -92,7 +92,6 @@
     margin: 0 0 18px; max-width: 15ch;
   }
   .lead { font-size: 18px; color: var(--graphite); margin: 0 0 24px; max-width: 58ch; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     min-height: 52px; padding: 0 22px; border-radius: 999px;
@@ -100,11 +99,57 @@
     border: 2px solid var(--ink);
   }
   .btn svg { width: 20px; height: 20px; flex: none; }
-  .btn-ink { background: var(--ink); color: var(--paper); }
-  .btn-line { background: transparent; color: var(--ink); }
   .rating { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; font-size: 15px; color: var(--graphite); text-decoration: none; }
   .rating .stars { color: var(--brass); letter-spacing: 2px; font-size: 16px; }
   .rating strong { color: var(--ink); }
+
+  /* Hero contacts: number + every messenger on the first screen */
+  .reach { display: grid; gap: 10px; max-width: 520px; }
+  .call-big {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: 60px; border-radius: 14px; background: var(--ink); color: var(--paper);
+    font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .call-big svg { width: 22px; height: 22px; flex: none; }
+  .mess { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .mess a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    min-height: 66px; border-radius: 14px; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 13px;
+  }
+  .mess svg { width: 24px; height: 24px; }
+  .mess .tg { background: var(--tg); }
+  .mess .viber { background: var(--viber); }
+  .mess .wa { background: var(--wa); }
+  .mess .ig { background: linear-gradient(45deg, #E1306C, #833AB4); }
+  .reach-note { margin: 2px 0 0; font-size: 14px; color: var(--graphite); }
+
+  /* Callback form */
+  .order { background: var(--paper); border-radius: 18px; padding: 22px 20px; margin-top: 22px; max-width: 520px; }
+  .order-title { font-family: var(--display); font-weight: 600; font-size: 21px; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .order-sub { margin: 0 0 4px; font-size: 15px; color: var(--graphite); }
+  .order label { display: block; margin: 14px 0 6px; font-weight: 600; font-size: 15px; }
+  .order label span { color: var(--brass); }
+  .order input {
+    width: 100%; min-height: 52px; padding: 0 14px;
+    border: 1.5px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink);
+    font: inherit; font-size: 17px;
+  }
+  .order input::placeholder { color: #8A919B; }
+  .order input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(176, 134, 44, 0.35); }
+  .order input[aria-invalid="true"] { border-color: #B3261E; }
+  .order button {
+    width: 100%; min-height: 56px; margin-top: 16px; border: 0; border-radius: 999px; cursor: pointer;
+    background: var(--brass); color: var(--ink); font: inherit; font-weight: 600; font-size: 17px;
+  }
+  .order button[disabled] { opacity: 0.6; cursor: default; }
+  .order-note { margin: 10px 0 0; font-size: 14px; color: var(--graphite); }
+  .order-err { margin: 8px 0 0; font-size: 14px; color: #B3261E; }
+  .order-ok { padding: 6px 0 2px; }
+  .order-ok p { margin: 0; color: var(--graphite); }
+  .order-ok .order-title { margin-bottom: 8px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   /* Photo strip: the one bold element */
   .strip-wrap { margin-top: 30px; }
@@ -258,6 +303,8 @@
     .bar { display: none; }
     .top-phone { display: inline; }
     .top-call { display: none; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start; }
+    .order { margin-top: 0; padding: 28px; }
     .works { grid-template-columns: repeat(5, 1fr); }
     section { padding-top: 80px; }
     .contact { grid-template-columns: 1.2fr 1fr 1.1fr; }
@@ -291,16 +338,45 @@
 <main>
   <div class="hero">
     <div class="wrap">
-      <h1>Зробимо ключ до вашого авто, навіть якщо загубили всі</h1>
-      <p class="lead">Виготовляємо і програмуємо автоключі в Києві та Київській області. Приїжджайте в майстерню в Софіївській Борщагівці або викликайте виїзну майстерню: ключ запрограмуємо біля вашого авто.</p>
-      <div class="actions">
-        <a class="btn btn-ink" href="tel:+380935057557"><svg aria-hidden="true"><use href="#i-phone"/></svg>Подзвонити</a>
-        <a class="btn btn-line" href="https://t.me/Fixkeylab"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написати в Telegram</a>
+      <div class="hero-grid">
+        <div>
+          <h1>Зробимо ключ до вашого авто, навіть якщо загубили всі</h1>
+          <p class="lead">Виготовляємо і програмуємо автоключі в Києві та Київській області. Приїжджайте в майстерню в Софіївській Борщагівці або викликайте виїзну майстерню: ключ запрограмуємо біля вашого авто.</p>
+          <div class="reach">
+            <a class="call-big" href="tel:+380935057557"><svg aria-hidden="true"><use href="#i-phone"/></svg>093 505 75 57</a>
+            <div class="mess">
+              <a class="tg" href="https://t.me/Fixkeylab"><svg aria-hidden="true"><use href="#i-tg"/></svg>Telegram</a>
+              <a class="viber" href="viber://chat?number=%2B380935057557"><svg aria-hidden="true"><use href="#i-viber"/></svg>Viber</a>
+              <a class="wa" href="https://wa.me/380935057557"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+              <a class="ig" href="https://www.instagram.com/fixkeylab/"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+            </div>
+            <p class="reach-note">Telegram, Viber і WhatsApp на цьому ж номері.</p>
+          </div>
+          <a class="rating" href="https://www.google.com/maps/search/?api=1&amp;query=FixKeyLab%20%D0%A1%D0%BE%D1%84%D1%96%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%20%D0%91%D0%BE%D1%80%D1%89%D0%B0%D0%B3%D1%96%D0%B2%D0%BA%D0%B0">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span><strong>5,0 у Google Картах</strong>, понад 450 відгуків</span>
+          </a>
+        </div>
+
+        <form class="order" id="order" name="callback" method="POST" action="/dyakuyemo/" data-netlify="true" netlify-honeypot="company" novalidate>
+          <input type="hidden" name="form-name" value="callback">
+          <p class="hp" aria-hidden="true"><label>Не заповнюйте це поле <input name="company" tabindex="-1" autocomplete="off"></label></p>
+          <div class="order-fields">
+            <p class="order-title">Залиште номер, ми передзвонимо</p>
+            <p class="order-sub">Майстер уточнить деталі й назве ціну.</p>
+            <label for="f-car">Марка, модель і рік авто</label>
+            <input id="f-car" name="car" type="text" autocomplete="off" placeholder="Наприклад: Toyota Camry 2018">
+            <label for="f-phone">Ваш телефон <span aria-hidden="true">*</span></label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="093 123 45 67" aria-describedby="f-err">
+            <p class="order-err" id="f-err" role="alert" hidden></p>
+            <button type="submit">Передзвоніть мені</button>
+          </div>
+          <div class="order-ok" role="status" hidden>
+            <p class="order-title">Дякуємо, заявку отримали!</p>
+            <p>Майстер передзвонить вам найближчим часом. Якщо терміново, телефонуйте: <a href="tel:+380935057557">093 505 75 57</a>.</p>
+          </div>
+        </form>
       </div>
-      <a class="rating" href="https://www.google.com/maps/search/?api=1&amp;query=FixKeyLab%20%D0%A1%D0%BE%D1%84%D1%96%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%20%D0%91%D0%BE%D1%80%D1%89%D0%B0%D0%B3%D1%96%D0%B2%D0%BA%D0%B0">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <span><strong>5,0 у Google Картах</strong>, понад 450 відгуків</span>
-      </a>
 
       <div class="strip-wrap">
         <div class="strip" aria-label="Наші роботи">
@@ -346,7 +422,7 @@
     <div class="wrap">
       <h2 id="h-how">Як ми працюємо</h2>
       <ol class="steps">
-        <li><div><h3>Ви дзвоните або пишете</h3><p>Назвіть марку, модель і рік авто та скажіть, чи є у вас хоч один ключ.</p></div></li>
+        <li><div><h3>Ви дзвоните, пишете або залишаєте заявку</h3><p>Назвіть марку, модель і рік авто та скажіть, чи є у вас хоч один ключ.</p></div></li>
         <li><div><h3>Ми називаємо ціну</h3><p>Пропонуємо оригінальний ключ або аналог, щоб ви обрали за бюджетом.</p></div></li>
         <li><div><h3>Робимо ключ</h3><p>У майстерні або біля вашого авто виготовляємо ключ і прописуємо його в пам'ять автомобіля.</p></div></li>
         <li><div><h3>Перевіряємо разом з вами</h3><p>Двері, багажник, запуск двигуна і жодної помилки на панелі.</p></div></li>
@@ -455,6 +531,51 @@
   <a class="viber" href="viber://chat?number=%2B380935057557" aria-label="Viber"><svg aria-hidden="true"><use href="#i-viber"/></svg></a>
   <a class="wa" href="https://wa.me/380935057557" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 </nav>
+
+<script>
+(function () {
+  var form = document.getElementById('order');
+  if (!form || !window.fetch) return;
+  var phone = form.querySelector('#f-phone');
+  var err = form.querySelector('#f-err');
+  var btn = form.querySelector('button');
+
+  function showError(text) {
+    err.textContent = text;
+    err.hidden = false;
+    phone.setAttribute('aria-invalid', 'true');
+    phone.focus();
+  }
+
+  phone.addEventListener('input', function () {
+    if (!err.hidden) { err.hidden = true; phone.removeAttribute('aria-invalid'); }
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var digits = phone.value.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 12) {
+      showError('Вкажіть номер телефону повністю, наприклад 093 123 45 67.');
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Надсилаємо…';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.querySelector('.order-fields').hidden = true;
+      form.querySelector('.order-ok').hidden = false;
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Передзвоніть мені';
+      showError('Не вдалося надіслати. Зателефонуйте нам: 093 505 75 57.');
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
